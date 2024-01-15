@@ -19,6 +19,7 @@ export default function Nearby() {
   const [isLocationModalVisible, setLocationModalVisible] = useState(false);
 
 
+  // game modal
   const openGameModal = () => {
     setGameModalVisible(true);
   };
@@ -31,7 +32,7 @@ export default function Nearby() {
   };
 
 
-
+// calandar modal
   const openCalendarModal = () => {
     setSelectedDate('');
     setCalendarModalVisible(true);
@@ -41,7 +42,7 @@ export default function Nearby() {
   };
 
 
-
+// location modal
   const openLocationModal = () => {
     setSelectedDate('');
     setLocationModalVisible(true);
@@ -51,7 +52,7 @@ export default function Nearby() {
   };
 
 
-  
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: () => (
@@ -71,7 +72,7 @@ export default function Nearby() {
       <View style={styles.container}>
 
 
-        {/* Big button with + icon */}
+        {/* select game button */}
         <TouchableOpacity style={[styles.bigButton, { width: '80%' }]} onPress={openGameModal}>
           <Ionicons name="add-circle-outline" size={46} color="black" />
           <Text style={styles.buttonText}>Select Game</Text>
@@ -101,7 +102,7 @@ export default function Nearby() {
         </Modal>
 
 
-        {/* Three buttons with location, date, and time */}
+        {/* three buttons with location, date, and time */}
         <View style={styles.smallButtonsContainer}>
           <TouchableOpacity style={styles.smallButton} onPress={openLocationModal}>
             <Ionicons style={styles.icon} name="location" size={28} color="black" />
@@ -124,14 +125,14 @@ export default function Nearby() {
         </View>
 
 
-        {/* Button with text "Let's Play" */}
+        {/*  "Let's Play" button */}
         <TouchableOpacity style={[styles.letsPlayButton, { width: '70%' }]}>
           <Text style={styles.letsPlayText}>Let's Play</Text>
         </TouchableOpacity>
 
 
 
-        {/* Big button with "View Matches" */}
+        {/* "View Matches" button */}
         <TouchableOpacity
           style={[styles.bigButton, { width: '80%' }]}
           onPress={() => navigation.navigate('ViewMatches')}
@@ -162,14 +163,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 5,
     elevation: 5,
-    flexDirection: 'column', // Make the content inside the button a column
-    alignItems: 'center', // Center the items horizontally
+    flexDirection: 'column', 
+    alignItems: 'center', 
   },
   smallButtonsContainer: {
     flexDirection: 'column',
     marginVertical: 10,
     width: '50%',
-    justifyContent: 'space-between', // Add this line for equal spacing
+    justifyContent: 'space-between', 
   },
   smallButton: {
     backgroundColor: '#D9D9D9',
@@ -180,11 +181,10 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5,
     alignItems: 'center',
-    marginBottom: 10, // Add margin to create a gap between buttons
-    borderWidth: 2,            // Add border width
+    marginBottom: 10, 
+    borderWidth: 2,           
     borderColor: 'darkgray',
   },
-
   letsPlayButton: {
     backgroundColor: '#129E74',
     borderRadius: 50,
@@ -194,8 +194,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 5,
     elevation: 5,
-    borderWidth: 2,            // Add border width
-    borderColor: 'darkgreen', // Border color
+    borderWidth: 2,           
+    borderColor: 'darkgreen', 
   },
   letsPlayText: {
     color: 'black',
@@ -234,10 +234,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
-    width: '100%', // Set the width to 100% to match the container
+    width: '100%', 
   },
   dropdownContainer: {
-    width: '70%', // Set the width of the container
+    width: '70%', 
     justifyContent: 'center',
     alignItems: 'center',
   },

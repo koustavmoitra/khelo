@@ -19,15 +19,6 @@ export default function Profile({ navigation }) {
   const [checked, setChecked] = useState('male'); // Initial value
 
 
-  // useLayoutEffect(() => {
-  //   navigation.setOptions({
-  //     headerTitle: () => (
-  //       <View>
-  //         <Text style={styles.headerTitle}>Profile</Text>
-  //       </View>
-  //     ),
-  //   });
-  // }, [navigation]);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -39,10 +30,14 @@ export default function Profile({ navigation }) {
     });
   }, [navigation]);
 
+
+  // share function
   const handleSharePress = () => {
     setModalVisibleShare(true);
   };
 
+
+  // logout function
   const handleLogoutPress = () => {
     console.log("Logout button pressed");
     setModalVisibleLogout(true);
@@ -51,29 +46,25 @@ export default function Profile({ navigation }) {
     setModalVisibleLogout(false);
 
     if (confirmed) {
-      // Perform logout actions and navigate to the login page
       navigation.navigate('Login');
     }
   };
 
   const handleModalSubmit = () => {
-    // Handle the submission of the modal form
+    // handle the submission of the modal form
     setModalVisible(false); // Close the modal after submission
   };
 
 
-   const openWhatsApp = () => {
-    // Use deep linking to open WhatsApp
+  const openWhatsApp = () => {
     Linking.openURL('whatsapp://send?text=Hello%20from%20my%20app');
   };
 
   const openFacebook = () => {
-    // Use deep linking to open Facebook
     Linking.openURL('https://www.facebook.com/sharer/sharer.php?u=myappurl');
   };
 
   const openInstagram = () => {
-    // Use deep linking to open Instagram
     Linking.openURL('https://www.instagram.com/');
   };
 
@@ -83,40 +74,41 @@ export default function Profile({ navigation }) {
       <View style={styles.profileInfo}>
 
         <View style={styles.leftIcons}>
-        <TouchableOpacity onPress={handleSharePress}>
-          <Ionicons name='share-social-outline' size={30} style={styles.icon} />
-          <Text style={styles.iconText}>Share</Text>
+          <TouchableOpacity onPress={handleSharePress}>
+            <Ionicons name='share-social-outline' size={30} style={styles.icon} />
+            <Text style={styles.iconText}>Share </Text>
           </TouchableOpacity>
         </View>
 
-       
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={isModalVisibleShare}
-        onRequestClose={() => setModalVisibleShare(false)}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>Share via</Text>
-            <View style={styles.shareIconsContainer}>
-              <TouchableOpacity onPress={openWhatsApp}>
-                <FontAwesome name='whatsapp' size={30} style={styles.shareIcon} />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={openFacebook}>
-                <FontAwesome name='facebook' size={30} style={styles.shareIcon} />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={openInstagram}>
-                <FontAwesome name='instagram' size={30} style={styles.shareIcon} />
-              </TouchableOpacity>
+{/* share modal */}
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={isModalVisibleShare}
+          onRequestClose={() => setModalVisibleShare(false)}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <Text style={styles.modalTitle}>Share Profile via</Text>
+              <View style={styles.shareIconsContainer}>
+                <TouchableOpacity onPress={openWhatsApp}>
+                  <FontAwesome name='whatsapp' size={30} style={styles.shareIcon} />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={openFacebook}>
+                  <FontAwesome name='facebook' size={30} style={styles.shareIcon} />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={openInstagram}>
+                  <FontAwesome name='instagram' size={30} style={styles.shareIcon} />
+                </TouchableOpacity>
+              </View>
+              <Button title="Cancel" onPress={() => setModalVisibleShare(false)} />
             </View>
-            <Button title="Cancel" onPress={() => setModalVisibleShare(false)} />
           </View>
-        </View>
-      </Modal>
+        </Modal>
 
 
 
+{/* logout button */}
         <View style={styles.rightIcon}>
           <TouchableOpacity onPress={handleLogoutPress}>
             <Ionicons name='log-out-outline' size={30} style={styles.icon} />
@@ -125,6 +117,8 @@ export default function Profile({ navigation }) {
         </View>
       </View>
 
+
+{/* logout modal */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -154,46 +148,41 @@ export default function Profile({ navigation }) {
 
 
 
-      {/* Profile Avatar with Edit Icon */}
+      {/* profile Avatar with edit Icon */}
       <View style={styles.avatarContainer}>
-        {/* Add your profile avatar component here */}
         <Image source={require('./../Assets/Images/profilepic.jpg')} style={{ width: '50%', height: 170, alignSelf: 'center', resizeMode: 'cover', borderRadius: 100, borderColor: '#fff', borderWidth: 2, }} />
-        {/* Add your edit icon here if needed */}
+       
         <TouchableOpacity onPress={() => setModalVisible(true)}>
           <Ionicons name='create-outline' size={30} style={styles.icon} />
         </TouchableOpacity>
-        {/* <Ionicons name='create-outline'  size={30}></Ionicons> */}
       </View>
 
 
-      {/* Input Fields */}
+      {/* Input Fields non-editable*/}
       <View style={styles.inputContainer}>
         <Text style={styles.label}>First Name :</Text>
         <TextInput
           style={styles.input}
           placeholder=" Koustav" editable={false}
-        // Add onChangeText and value props to handle input
         />
 
         <Text style={styles.label}>Last Name :</Text>
         <TextInput
           style={styles.input}
           placeholder="Moitra" editable={false}
-        // Add onChangeText and value props to handle input
         />
-        {/* Add gender radio buttons here */}
+
         <Text style={styles.label}>Email :</Text>
         <TextInput
           style={styles.input}
           placeholder="koustavmoitra711@gmail.com" editable={false}
-        // Add onChangeText and value props to handle input
         />
+
 
         <Text style={styles.label}>Mobile :</Text>
         <TextInput
           style={styles.input}
-          placeholder=" 8917580392"  editable={false}
-        // Add onChangeText and value props to handle input
+          placeholder=" 8917580392" editable={false}
         />
 
         <Text>Gender</Text>
@@ -201,7 +190,7 @@ export default function Profile({ navigation }) {
           <RadioButton
             value="male"
             status={checked === 'male' ? 'checked' : 'unchecked'}
-            onPress={() => setChecked('male')} 
+            onPress={() => setChecked('male')}
           />
           <Text>Male</Text>
 
@@ -221,7 +210,7 @@ export default function Profile({ navigation }) {
         </View>
       </View>
 
-      {/* Modal for Editing Profile */}
+      {/* Modal for editing Profile */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -231,7 +220,6 @@ export default function Profile({ navigation }) {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Edit Profile</Text>
-            {/* Add your input fields for editing profile here */}
             <TextInput style={styles.modalInput} placeholder="First Name" />
             <TextInput style={styles.modalInput} placeholder="Last Name" />
             <TextInput style={styles.modalInput} placeholder="Email" />
@@ -297,9 +285,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
   },
-  inputContainer: {
-    // Add styles for the input container as needed
-  },
   input: {
     height: 40,
     borderColor: 'gray',
@@ -307,7 +292,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     padding: 10,
   },
-
   labelContainer: {
     marginBottom: 5,
   },
@@ -389,7 +373,7 @@ const styles = StyleSheet.create({
   },
   modalButtonOption: {
     flex: 1,
-    backgroundColor: '#007BFF', // Adjust the color as needed
+    backgroundColor: '#007BFF', 
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
@@ -405,9 +389,9 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   shareIcon: {
-    color: 'black', // You can adjust the color as needed
-    padding:15,
-    marginBottom:5,
+    color: 'black', 
+    padding: 15,
+    marginBottom: 5,
   },
 
 });

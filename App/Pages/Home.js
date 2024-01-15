@@ -1,8 +1,7 @@
 import React, { useLayoutEffect } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions, FlatList,TouchableOpacity,ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import Nearby from './Nearby';
-import Profile from './Profile';
+
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.9);
@@ -22,6 +21,7 @@ const Home = ({ navigation }) => {
     });
   }, [navigation]);
 
+// game card of different sports
   const ProductCard = ({ title, description, imageUrl }) => (
     <View style={styles.productCard}>
       <Image source={imageUrl} style={styles.productImage} />
@@ -31,14 +31,15 @@ const Home = ({ navigation }) => {
     </View>
   );
 
-  
 
+// dummy dynamic banners
   const images = [
     require('../Assets/Images/bannermain.jpg'),
     require('../Assets/Images/banner4.jpg'),
     require('../Assets/Images/banner5.jpg'),
   ];
 
+// dummy game cards images and name
   const products = [
     { id: '1', title: 'cricket', imageUrl: require('../Assets/Images/cricket1.jpg') },
     { id: '2', title: 'football', imageUrl: require('../Assets/Images/s3.jpg') },
@@ -50,9 +51,9 @@ const Home = ({ navigation }) => {
   );
 
   return (
-   
 
-     <ScrollView>
+
+    <ScrollView>
 
       {/* Section 1: Image Slider */}
       <View style={styles.imageSliderContainer}>
@@ -66,7 +67,7 @@ const Home = ({ navigation }) => {
         />
       </View>
 
-      
+
 
 
       {/* Section 2: sports Cards */}
@@ -83,7 +84,7 @@ const Home = ({ navigation }) => {
             />
           )}
         />
-       <TouchableOpacity onPress={() => navigation.navigate("Sports")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Sports")}>
           <Text style={styles.moreText}>more...</Text>
         </TouchableOpacity>
       </View>
@@ -92,16 +93,16 @@ const Home = ({ navigation }) => {
 
       {/* Section 3: Latest News */}
       <View style={styles.sectionContainer}>
-  <Text style={styles.sectionTitle}>Latest News</Text>
+        <Text style={styles.sectionTitle}>Latest News</Text>
 
-  <View style={styles.bannerContainer}>
-    <Image source={require('../Assets/Images/banner2.jpg')} style={styles.bannerImage} />
-    <Image source={require('../Assets/Images/banner3.jpg')} style={styles.bannerImage} />
-  </View>
-  <TouchableOpacity onPress={() => navigation.navigate("News")}>
+        <View style={styles.bannerContainer}>
+          <Image source={require('../Assets/Images/banner2.jpg')} style={styles.bannerImage} />
+          <Image source={require('../Assets/Images/banner3.jpg')} style={styles.bannerImage} />
+        </View>
+        <TouchableOpacity onPress={() => navigation.navigate("News")}>
           <Text style={styles.moreText}>more...</Text>
         </TouchableOpacity>
-</View>
+      </View>
 
     </ScrollView>
   );
@@ -124,7 +125,7 @@ const styles = StyleSheet.create({
   },
   sliderImage: {
     width: '100%',
-    height: '100%', 
+    height: '100%',
     borderRadius: 10,
   },
   sectionContainer: {
@@ -146,46 +147,45 @@ const styles = StyleSheet.create({
   productCard: {
     marginRight: 20,
     width: 100,
-    height: 150, // Adjust the height as needed
+    height: 150, 
     borderRadius: 8,
     overflow: 'hidden',
     alignItems: 'center',
   },
   productImage: {
     width: '100%',
-    height: '75%', // Adjust the height as needed
+    height: '75%', 
     borderRadius: 8,
   },
   productDetails: {
     padding: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    height: '25%', // Adjust the height as needed
+    height: '25%', 
   },
   productTitle: {
-    fontSize: 15, // Adjust the font size as needed
+    fontSize: 15, 
     fontWeight: 'bold',
     textAlign: 'center',
   },
-   moreText: {
+  moreText: {
     fontSize: 16,
-    color: 'blue', // Adjust the color as needed
+    color: 'blue', 
     textAlign: 'right',
     marginTop: 10,
   },
-
-   bannerContainer: {
+  bannerContainer: {
     flexDirection: 'column',
     marginTop: 10,
   },
   bannerImage: {
     width: '100%',
-    height: 150, // Adjust the height as needed
+    height: 150, 
     borderRadius: 10,
     marginBottom: 10,
-    resizeMode :'contain',
+    resizeMode: 'contain',
   },
- 
+
 });
 
 export default Home;

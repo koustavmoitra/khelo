@@ -11,7 +11,6 @@ import News from './App/Pages/News';
 import Nearby from './App/Pages/Nearby';
 import Profile from './App/Pages/Profile';
 import Login from './App/Pages/Login';
-import Sports from './App/Pages/Sports';
 import ViewMatches from './App/Pages/ViewMatches';
 import { YellowBox } from 'react-native';
 import { LogBox } from 'react-native';
@@ -22,19 +21,14 @@ LogBox.ignoreLogs(['ViewPropTypes will be removed']);
 // Ignore all logs
 LogBox.ignoreAllLogs();
 
-// Your app components and logic go here...
-
-
 // Ignore specific warnings
 YellowBox.ignoreWarnings(['ViewPropTypes will be removed']);
 
 // Disable all warnings
 console.disableYellowBox = true;
 
-// Your app components and logic go here...
 
-
-
+// app components and logic go here...
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
@@ -92,7 +86,6 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={MainStackNavigator} />
         <Stack.Screen name="ViewMatches" component={ViewMatches} />
-
       </Stack.Navigator>
     </NavigationContainer>
   );

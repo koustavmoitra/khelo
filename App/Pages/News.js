@@ -18,6 +18,7 @@ const News = () => {
     });
   }, [navigation]);
 
+  // free news api with axios
   useEffect(() => {
     const fetchNewsData = async () => {
       try {
